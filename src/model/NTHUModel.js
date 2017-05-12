@@ -7,7 +7,7 @@ const NTHUBookUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WTL&l
 const NTHUISBNUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WAN&local_base=BK&adjacent=1';
 
 function getBook(searchText) {
-    let url = NTHUBookUrl + "&request=" + searchText;
+    let url = NTHUBookUrl + "&request=" + encodeURIComponent(searchText);
     console.log("Make get request to", url);
     return axios.get(url).then(function(res) {
         if (res.status !== 200)
@@ -18,7 +18,7 @@ function getBook(searchText) {
 }
 
 function getISBN(searchText) {
-    let url = NTHUISBNUrl + "&request=" + searchText;
+    let url = NTHUISBNUrl + "&request=" + encodeURIComponent(searchText);
     console.log("Make get request to", url);
     return axios.get(url).then(function(res) {
         if (res.status !== 200)
