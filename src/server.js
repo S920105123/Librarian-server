@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const NTHURouter = require('./routers/NTHU.js');
+const NCTURouter = require('./routers/NCTU.js');
 const requestLogger = require('./middleware/request-logger.js');
 const errorHandler = require('./middleware/error-handler.js');
 
@@ -15,6 +16,7 @@ app.use(express.static('dist', {
     }
 }));
 app.use('/api', NTHURouter);
+app.use('/api', NCTURouter);
 app.get('/*', (req, res) => res.redirect('/'));
 app.use(errorHandler);
 

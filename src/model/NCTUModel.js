@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const BookUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WTL&local_base=TOP01&adjacent=1';
-const ISBNUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WAN&local_base=TOP01&adjacent=1';
+const BookUrl = 'http://webpac.lib.nctu.edu.tw/F?func=find-b&find_code=WTI&local_base=TOP01&adjacent=1';
+const ISBNUrl = 'http://webpac.lib.nctu.edu.tw/F?func=find-b&find_code=ISBN&local_base=TOP01&adjacent=1';
 const optimizeFlag = "var title = "
 
 function getBook(searchText) {
