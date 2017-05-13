@@ -5,6 +5,7 @@ const axios = require('axios');
 
 const NTHUBookUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WTL&local_base=BK&adjacent=1';
 const NTHUISBNUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WAN&local_base=BK&adjacent=1';
+const optimizeFlag = "var title = "
 
 function getBook(searchText) {
     let url = NTHUBookUrl + "&request=" + encodeURIComponent(searchText);
@@ -13,7 +14,8 @@ function getBook(searchText) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
         //console.log("get",res.data);
-        return res.data;
+
+        return res.data.slice(res.data.indexOf(optimizeFlag));
     });
 }
 
@@ -24,7 +26,8 @@ function getISBN(searchText) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
         //console.log("get",res.data);
-        return res.data;
+
+        return res.data.slice(res.data.indexOf(optimizeFlag));
     });
 }
 

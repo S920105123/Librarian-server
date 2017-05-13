@@ -27720,8 +27720,6 @@ function listPosts(searchText, type) {
 
     console.log('Making GET request to: ' + url);
 
-    console.log('Making GET request to: ' + url);
-
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (res) {
         if (res.status !== 200) throw new Error('Unexpected response code: ' + res.status);
 
@@ -27731,7 +27729,6 @@ function listPosts(searchText, type) {
 
         var data = res.data.html,
             result = [];
-        console.log(res.data.html);
 
         var i = 0;
         var idx = data.indexOf(titleFlag);
@@ -27782,7 +27779,13 @@ function listPosts(searchText, type) {
                 subStr += data.charAt(j);
                 j++;
             }
-            result[i]['location'] = [subStr];
+
+            var _temp = subStr.indexOf("(");
+            if (_temp != -1) {
+                result[i]['status'] = "館藏/借出: " + subStr.slice(_temp);
+                subStr = subStr.slice(0, _temp);
+            }
+            result[i]['location'] = ["清華大學圖書館 - " + subStr];
             //console.log("Location =",subStr);
 
             idx = data.indexOf(titleFlag);
@@ -27796,7 +27799,13 @@ function listPosts(searchText, type) {
                     subStr += data.charAt(j);
                     j++;
                 }
-                result[i]['location'].push(subStr);
+
+                _temp = subStr.indexOf("(");
+                if (_temp != -1) {
+                    result[i]['status'] = "館藏/借出: " + subStr.slice(_temp);
+                    subStr = subStr.slice(0, _temp - 1);
+                }
+                result[i]['location'].push("清華大學圖書館 - " + subStr);
                 //console.log("Location =",subStr);
             }
 
