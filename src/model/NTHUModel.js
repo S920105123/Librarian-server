@@ -3,8 +3,8 @@ const uuid = require('uuid/v4');
 const moment = require('moment');
 const axios = require('axios');
 
-const NTHUBookUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WTL&local_base=BK&adjacent=1';
-const NTHUISBNUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WAN&local_base=BK&adjacent=1';
+const NTHUBookUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WTL&local_base=TOP01&adjacent=1';
+const NTHUISBNUrl = 'http://webpac.lib.nthu.edu.tw/F?func=find-b&find_code=WAN&local_base=TOP01&adjacent=1';
 const optimizeFlag = "var title = "
 
 function getBook(searchText) {
